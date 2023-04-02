@@ -21,8 +21,9 @@ public class Main {
                                       BiConsumer<? super T, ? super T> minMaxConsumer) {
         List<T> list = stream.sorted(order).collect(Collectors.toList());
         if (!list.isEmpty()) {
-            T max = list.stream().max((Comparator<? super T>) naturalOrder().reversed()).get();
-            T min = list.stream().min((Comparator<? super T>) naturalOrder().reversed()).get();
+            T min = list.stream().min((Comparator<? super T>) naturalOrder()).get();
+            T max = list.stream().max((Comparator<? super T>) naturalOrder()).get();
+
             minMaxConsumer.accept(min, max);
         } else {
             minMaxConsumer.accept(null, null);
